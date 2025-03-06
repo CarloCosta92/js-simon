@@ -4,6 +4,33 @@
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 // NOTA: non è importante l'ordine con cui l'utente inserisce i numeri, basta che ne indovini il più possibile.
 
+
+
+
+
+// funzione countdown
+let countdownTime = 30; // Imposta il tempo di countdown iniziale
+
+function startCountdown() {
+  const countdownElement = document.getElementById('countdown');
+
+  const interval = setInterval(() => {
+    countdownElement.textContent = countdownTime; // Mostra il tempo rimanente nel countdown
+
+    if (countdownTime <= 0) {
+      clearInterval(interval);
+     
+    } else {
+      countdownTime--;
+      answersForm.classList.remove("d-none");
+      numbersList.classList.add("hidden");
+    }
+  }, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', startCountdown);
+
+
 // funzione per generare i numeri radomici
 
 function randomNumber() {
@@ -14,6 +41,7 @@ function randomNumber() {
 
 
 
+// funzione per l'array dei numeri randomici
 function displayRandomNumbers() {
     
     const numberListRandom = [
@@ -34,3 +62,4 @@ function displayRandomNumbers() {
   }
 
   displayRandomNumbers();
+
