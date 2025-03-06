@@ -5,13 +5,13 @@
 // NOTA: non è importante l'ordine con cui l'utente inserisce i numeri, basta che ne indovini il più possibile.
 
 
-let count=0;
+let count = 0;
 let numberListRandom = [];
 let userNumber = [];
 
 
 // funzione countdown
-let countdownTime = 3; // Imposta il tempo di countdown iniziale
+let countdownTime = 10; // Imposta il tempo di countdown iniziale
 
 function startCountdown() {
     const countdownElement = document.getElementById('countdown');
@@ -25,7 +25,7 @@ function startCountdown() {
             clearInterval(interval);
             answersForm.classList.remove("d-none");
             numbersList.classList.add("d-none");
-    
+
         } else {
             countdownTime--;
 
@@ -82,35 +82,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const inputs = document.querySelectorAll('input');
         userNumber = [];
-        
+
 
         for (let i = 0; i < inputs.length; i++) {
             const inputValue = inputs[i].value;
-            if (inputValue) { 
-                userNumber.push(Number(inputValue)); 
+            if (inputValue) {
+                userNumber.push(Number(inputValue));
             }
         }
 
         console.log(userNumber);
-        control ();
+        control();
     });
-    
+
 });
 
 
 // devo confrontare number list random[] con user number[]
 
-function control () {
-    count=0;
+function control() {
+    count = 0;
 
-for (let i = 0; i < numberListRandom.length; i++) {
-    if (userNumber.includes(numberListRandom[i])) {
-        count++; 
+    for (let i = 0; i < numberListRandom.length; i++) {
+        if (userNumber.includes(numberListRandom[i])) {
+            count++;
+        }
+
+        console.log(count);
     }
-
-    console.log(count);
-}
-risultatoFinale();
+    risultatoFinale();
 }
 
 // funzione per il risultato
