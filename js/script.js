@@ -9,29 +9,29 @@
 
 
 // funzione countdown
-let countdownTime = 10; // Imposta il tempo di countdown iniziale
+let countdownTime = 3; // Imposta il tempo di countdown iniziale
 
 function startCountdown() {
-  const countdownElement = document.getElementById('countdown');
-  const numbersList = document.getElementById('numbers-list');
-  const answersForm = document.getElementById('answers-form');
+    const countdownElement = document.getElementById('countdown');
+    const numbersList = document.getElementById('numbers-list');
+    const answersForm = document.getElementById('answers-form');
 
-  const interval = setInterval(() => {
-    countdownElement.textContent = countdownTime;
-   
-    if (countdownTime <= 0) {
-      clearInterval(interval);
-      answersForm.classList.remove("d-none");
-      numbersList.classList.add("d-none");
-     
-    } else {
-      countdownTime--;
+    const interval = setInterval(() => {
+        countdownElement.textContent = countdownTime;
 
-    }
-  }, 1000);
+        if (countdownTime <= 0) {
+            clearInterval(interval);
+            answersForm.classList.remove("d-none");
+            numbersList.classList.add("d-none");
+
+        } else {
+            countdownTime--;
+
+        }
+    }, 1000);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     startCountdown();
     displayRandomNumbers();
 });
@@ -41,31 +41,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function randomNumber() {
     return Math.floor(Math.random() * 50) + 1;
-  }
-  
-  let numeroCasuale = randomNumber();
+}
+
+let numeroCasuale = randomNumber();
 
 
 
 // funzione per l'array dei numeri randomici
 function displayRandomNumbers() {
-    
+
     const numberListRandom = [
-      randomNumber(),
-      randomNumber(),
-      randomNumber(),
-      randomNumber(),
-      randomNumber()
+        randomNumber(),
+        randomNumber(),
+        randomNumber(),
+        randomNumber(),
+        randomNumber()
     ];
-   
+
     const numbersList = document.getElementById('numbers-list');
 
     for (let i = 0; i < numberListRandom.length; i++) {
         const listNumber = document.createElement('li');
-        listNumber.textContent = numberListRandom[i]; 
+        listNumber.textContent = numberListRandom[i];
         numbersList.appendChild(listNumber);
-      }
-  }
+    }
+}
+
+
+// stampare numeri inseriti dall'utente in un array usando un for quando clicco sul bottone
+
+document.addEventListener('DOMContentLoaded', function () {
+    const clickButton = document.querySelector('button');
+
+    clickButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        const inputs = document.querySelectorAll('input');
+        let userNumber = [];
+
+        for (let i = 0; i < inputs.length; i++) {
+            userNumber.push(inputs[i].value);
+        }
+
+        console.log(userNumber);
+    });
+});
+
+
+
+
 
 
 
