@@ -5,7 +5,9 @@
 // NOTA: non è importante l'ordine con cui l'utente inserisce i numeri, basta che ne indovini il più possibile.
 
 
-
+let count=0;
+let numberListRandom = [];
+let userNumber = [];
 
 
 // funzione countdown
@@ -23,6 +25,7 @@ function startCountdown() {
             clearInterval(interval);
             answersForm.classList.remove("d-none");
             numbersList.classList.add("d-none");
+            
 
         } else {
             countdownTime--;
@@ -50,7 +53,7 @@ let numeroCasuale = randomNumber();
 // funzione per l'array dei numeri randomici
 function displayRandomNumbers() {
 
-    const numberListRandom = [
+    numberListRandom = [
         randomNumber(),
         randomNumber(),
         randomNumber(),
@@ -59,6 +62,7 @@ function displayRandomNumbers() {
     ];
 
     const numbersList = document.getElementById('numbers-list');
+    numbersList.innerHTML = '';
 
     for (let i = 0; i < numberListRandom.length; i++) {
         const listNumber = document.createElement('li');
@@ -70,6 +74,7 @@ function displayRandomNumbers() {
 
 // stampare numeri inseriti dall'utente in un array usando un for quando clicco sul bottone
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const clickButton = document.querySelector('button');
 
@@ -77,15 +82,38 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         const inputs = document.querySelectorAll('input');
-        let userNumber = [];
+        userNumber = [];
+        
 
         for (let i = 0; i < inputs.length; i++) {
-            userNumber.push(inputs[i].value);
+            const inputValue = inputs[i].value;
+            if (inputValue) { 
+                userNumber.push(Number(inputValue)); 
+            }
         }
 
         console.log(userNumber);
+        control ();
     });
+    
 });
+
+
+// devo confrontare number list random[] con user number[]
+
+function control () {
+    count=0;
+
+for (let i = 0; i < numberListRandom.length; i++) {
+    if (userNumber.includes(numberListRandom[i])) {
+        count++; 
+    }
+
+    console.log(count);
+}
+
+}
+
 
 
 
