@@ -25,8 +25,7 @@ function startCountdown() {
             clearInterval(interval);
             answersForm.classList.remove("d-none");
             numbersList.classList.add("d-none");
-            
-
+    
         } else {
             countdownTime--;
 
@@ -111,7 +110,20 @@ for (let i = 0; i < numberListRandom.length; i++) {
 
     console.log(count);
 }
+risultatoFinale();
+}
 
+// funzione per il risultato
+
+function risultatoFinale() {
+    const result = document.getElementById('message');
+    if (count === 5) {
+        result.textContent = `Hai vinto!`;
+
+    } else {
+        result.textContent = `Hai indovinato ${count} numeri `;
+
+    }
 }
 
 
