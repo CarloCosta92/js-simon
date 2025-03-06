@@ -9,26 +9,32 @@
 
 
 // funzione countdown
-let countdownTime = 30; // Imposta il tempo di countdown iniziale
+let countdownTime = 10; // Imposta il tempo di countdown iniziale
 
 function startCountdown() {
   const countdownElement = document.getElementById('countdown');
+  const numbersList = document.getElementById('numbers-list');
+  const answersForm = document.getElementById('answers-form');
 
   const interval = setInterval(() => {
-    countdownElement.textContent = countdownTime; // Mostra il tempo rimanente nel countdown
-
+    countdownElement.textContent = countdownTime;
+   
     if (countdownTime <= 0) {
       clearInterval(interval);
+      answersForm.classList.remove("d-none");
+      numbersList.classList.add("d-none");
      
     } else {
       countdownTime--;
-      answersForm.classList.remove("d-none");
-      numbersList.classList.add("hidden");
+
     }
   }, 1000);
 }
 
-document.addEventListener('DOMContentLoaded', startCountdown);
+document.addEventListener('DOMContentLoaded', function() {
+    startCountdown();
+    displayRandomNumbers();
+});
 
 
 // funzione per generare i numeri radomici
@@ -61,5 +67,5 @@ function displayRandomNumbers() {
       }
   }
 
-  displayRandomNumbers();
+
 
